@@ -146,7 +146,7 @@ class EventView {
     if (editedEvent) {
       const cells = editedEvent.getElementsByTagName("td");
 
-      for (let i = 0; i < cells.length - 1; i++) {
+      for (let i = 0; i < cells.length; i++) {
         cells[i].innerHTML = "";
       }
 
@@ -154,14 +154,17 @@ class EventView {
       cells[1].textContent = startDate;
       cells[2].textContent = endDate;
 
-      const actionsBtn1 = cells[3].querySelector(".blue");
-      actionsBtn1.classList.remove("event-list__btn-save");
+      const actionsBtn1 = document.createElement("span");
+      actionsBtn1.classList.add("event-list__btn");
       actionsBtn1.classList.add("event-list__btn-edit");
+      actionsBtn1.classList.add("blue");
       actionsBtn1.innerHTML = `<svg class="event-list__icon" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="EditIcon" aria-label="fontSize small"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"></path></svg>`;
-      const actionsBtn2 = cells[3].querySelector(".red");
-      actionsBtn2.classList.remove("event-list__btn-delete");
-      actionsBtn2.classList.add("event-list__btn-cancel");
+      const actionsBtn2 = document.createElement("span");
+      actionsBtn2.classList.add("event-list__btn");
+      actionsBtn2.classList.add("event-list__btn-delete");
+      actionsBtn2.classList.add("red");
       actionsBtn2.innerHTML = `<svg class="event-list__icon" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="DeleteIcon" aria-label="fontSize small"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"></path></svg>`;
+      cells[3].append(actionsBtn1, actionsBtn2);
     }
   }
 }
