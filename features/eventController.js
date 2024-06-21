@@ -37,17 +37,21 @@ class EventController {
         const startDate = startDateInput.value;
         const endDate = endDateInput.value;
 
-        const newEventItem = {
-          eventName: newEventName,
-          startDate: startDate,
-          endDate: endDate,
-        };
+        if (!newEventName || !startDate || !endDate) {
+          alert("Input Not Valid!");
+        } else {
+          const newEventItem = {
+            eventName: newEventName,
+            startDate: startDate,
+            endDate: endDate,
+          };
 
-        eventAPI.postAPI(newEventItem).then((_newEvent) => {
-          this.#model.addEvent(_newEvent);
-          this.#view.renderEventItem(_newEvent);
-          this.#view.removeRow(saveNewBtn.parentElement.parentElement);
-        });
+          eventAPI.postAPI(newEventItem).then((_newEvent) => {
+            this.#model.addEvent(_newEvent);
+            this.#view.renderEventItem(_newEvent);
+            this.#view.removeRow(saveNewBtn.parentElement.parentElement);
+          });
+        }
       });
     });
   }
@@ -72,22 +76,27 @@ class EventController {
 
         const { saveBtn, nameInput, startDateInput, endDateInput } =
           this.#view.editEventItem(eventId);
+
         saveBtn.addEventListener("click", (e) => {
           const newEventName = nameInput.value;
           const startDate = startDateInput.value;
           const endDate = endDateInput.value;
 
-          const editedEventItem = {
-            eventName: newEventName,
-            startDate: startDate,
-            endDate: endDate,
-            id: eventId,
-          };
+          if (!newEventName || !startDate || !endDate) {
+            alert("Input Not Valid!");
+          } else {
+            const editedEventItem = {
+              eventName: newEventName,
+              startDate: startDate,
+              endDate: endDate,
+              id: eventId,
+            };
 
-          eventAPI.patchAPI(eventId, editedEventItem).then((_editedEvent) => {
-            this.#model.editEvent(eventId, editedEventItem);
-            this.#view.saveEditedEventItem(editedEventItem);
-          });
+            eventAPI.patchAPI(eventId, editedEventItem).then((_editedEvent) => {
+              this.#model.editEvent(eventId, editedEventItem);
+              this.#view.saveEditedEventItem(editedEventItem);
+            });
+          }
         });
       }
     });
