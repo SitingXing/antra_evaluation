@@ -1,4 +1,4 @@
-// const todoView = new TodoView();
-// const todoModel = new TodoModel();
+const eventView = new EventView();
+const eventModel = new EventModel();
 
-// const todoController = new TodoController(todoModel, todoView);
+const eventController = new EventController(eventModel, eventView);

@@ -1,0 +1,13 @@
+.add-new-event {
+    text-align: center;
+    margin-bottom: 1%;
+}
+
+.add-new-event__btn {
+    border: none;
+    border-radius: 10px;
+    background-color: #008cba;
+    color: #f0f0f0;
+    font-size: 1.25rem;
+    padding: 1rem 2rem;
+}

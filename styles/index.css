@@ -1,0 +1,12 @@
+:root {
+    --tan: #e6e2d3;
+    --traffic-white: #f0f0f0;
+    --yellow-green: #4caf50;
+    --vermillion-red: #c94c4c;
+    --blue: #008cba;
+}
+
+.event-app {
+    width: 80%;
+    margin: 5% auto;
+}
