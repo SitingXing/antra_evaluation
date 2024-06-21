@@ -45,7 +45,7 @@ class EventController {
 
         eventAPI.postAPI(newEventItem).then((_newEvent) => {
           this.#model.addEvent(_newEvent);
-          this.#view.renderEventItem(newEventItem);
+          this.#view.renderEventItem(_newEvent);
           this.#view.removeRow(saveNewBtn.parentElement.parentElement);
         });
       });
